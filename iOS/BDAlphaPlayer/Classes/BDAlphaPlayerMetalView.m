@@ -116,9 +116,6 @@
     NSURL *url = [self.model.currentOrientationResourceInfo resourceFileURL];
     NSError *error = nil;
     BDAlphaPlayerAssetReaderOutput *output = [[BDAlphaPlayerAssetReaderOutput alloc] initWithURL:url error:&error];
-    CGRect rederFrame = [BDAlphaPlayerUtility frameFromVideoSize:output.videoSize renderSuperViewFrame:self.renderSuperViewFrame resourceModel:self.model];
-    self.frame = rederFrame;
-    
     if (error) {
         NSError *finishError = nil;
         switch (error.code) {
@@ -136,6 +133,9 @@
         [self didFinishPlayingWithError:finishError];
         return;
     }
+    CGRect rederFrame = [BDAlphaPlayerUtility frameFromVideoSize:output.videoSize renderSuperViewFrame:self.renderSuperViewFrame resourceModel:self.model];
+    self.frame = rederFrame;
+    
     self.state = BDAlphaPlayerPlayStatePlay;
     __weak __typeof(self) weakSelf = self;
     [self renderOutput:output resourceModel:self.model completion:^{

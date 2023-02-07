@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol BDAlphaPlayerMetalViewDelegate <NSObject>
 
-- (void)metalView:(BDAlphaPlayerMetalView *)metalView didFinishPlayingWithError:(NSError *)error;
+- (void)metalView:(BDAlphaPlayerMetalView *)metalView didFinishPlayingWithError:(nullable NSError *)error;
 
 @optional
 
